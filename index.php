@@ -159,8 +159,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						Ingreso & Registro
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						Ingreso
+						<button id="closemodal" type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -168,12 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="modal-body">
 							<div class="w3_login_module">
 								<div class="module form-module">
-									<div class="toggle">
-										<i class="fa fa-times fa-pencil"></i>
-										<div class="tooltip">Registro</div>
-									</div>
-									<div class="form">
-										<h3>Ingresa a tu cuenta</h3>
+									<div>
 										<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 											<div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
 												<input type="text" name="username" placeholder="Usuario" value="<?php echo $username; ?>" required>
@@ -190,15 +185,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<input type="submit" value="Ingresar">
 										</form>
 									</div>
-									<div class="form">
-										<h3>Crear una cuenta</h3>
-										<form action="#" method="post">
-											<input type="text" id="user" name="Username" placeholder="Usuario" required="">
-											<input type="password" id="pwd" name="Password" placeholder="Contraseña" required="">
-											<input type="email" id="mail" name="Email" placeholder="Email" required="">
-											<input type="text" id="nombre" name="Nombre" placeholder="Nombre" required="">
-											<input type="submit" onclick="register()" value="Registrarse">
-										</form>
+									<div class="cta1">
+										<a href="registro.html">Registrarse</a>
 									</div>
 									<div class="cta">
 										<a href="#">¿Olvidaste tu contraseña?</a>
@@ -1586,24 +1574,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 		<!-- //footer -->
-		<script>
-			function _(el) {
-				return document.getElementById(el);
-			}
-
-			function register() {
-				var formdata = new FormData();
-				formdata.append("user", _("user").value);
-				formdata.append("pwd", _("pwd").value);
-				formdata.append("mail", _("mail").value);
-				formdata.append("nombre", _("nombre").value);
-				var ajax = new XMLHttpRequest();
-				ajax.open("POST", "register.php");
-				ajax.send(formdata);
-				alert("Usuario creado con exito!");
-				javascript: location.href = 'index.html';
-			}
-		</script>
 		<!-- Bootstrap Core JavaScript -->
 		<script src="js/bootstrap.min.js"></script>
 		<script>

@@ -601,6 +601,19 @@ p.fexi_header_para1 a i {
     color: #fff;
     text-align: center;
 }
+.form-module .cta1 {
+	background: #c52020;
+    width: 100%;
+    padding: 15px 40px;
+    box-sizing: border-box;
+    color: #fff;
+    text-align: center;
+}
+.form-module .cta1 a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+}
 .form-module .cta a {
     color: #fff;
     text-decoration: none;
