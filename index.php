@@ -77,54 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<!DOCTYPE html>
 	<html lang="en">
 
-	<head>
-		<title>Movie Track!</title>
-		<!-- for-mobile-apps -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="keywords" content="One Movies Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-		<script type="application/x-javascript">
-			addEventListener("load", function () {
-				setTimeout(hideURLbar, 0);
-			}, false);
 
-			function hideURLbar() {
-				window.scrollTo(0, 1);
-			}
-		</script>
-		<!-- //for-mobile-apps -->
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="css/single.css" rel='stylesheet' type='text/css' />
-		<link href="css/medile.css" rel='stylesheet' type='text/css' />
-		<!-- banner-slider -->
-		<link href="css/jquery.slidey.min.css" rel="stylesheet">
-		<!-- //banner-slider -->
-		<!-- pop-up -->
-		<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-		<!-- //pop-up -->
-		<!-- font-awesome icons -->
-		<link rel="stylesheet" href="css/font-awesome.min.css" />
-		<!-- //font-awesome icons -->
-		<!-- js -->
-		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-		<!-- //js -->
-		<!-- start-smoth-scrolling -->
-		<script type="text/javascript" src="js/move-top.js"></script>
-		<script type="text/javascript" src="js/easing.js"></script>
-		<script type="text/javascript">
-			jQuery(document).ready(function ($) {
-				$(".scroll").click(function (event) {
-					event.preventDefault();
-					$('html,body').animate({
-						scrollTop: $(this.hash).offset().top
-					}, 1000);
-				});
-			});
-		</script>
-		<!-- start-smoth-scrolling -->
-	</head>
 
 	<body>
 		<!-- header -->
