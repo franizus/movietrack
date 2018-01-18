@@ -68,7 +68,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Close statement
         mysqli_stmt_close($stmt);
     }
-    	<head>
+    
+    // Close connection
+    mysqli_close($link);
+}
+?>
+
+	<!DOCTYPE html>
+	<html lang="en">
+
+	<head>
 		<title>Movie Track!</title>
 		<!-- for-mobile-apps -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -116,15 +125,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</script>
 		<!-- start-smoth-scrolling -->
 	</head>
-    // Close connection
-    mysqli_close($link);
-}
-?>
-
-	<!DOCTYPE html>
-	<html lang="en">
-
-
 
 	<body>
 		<!-- header -->
