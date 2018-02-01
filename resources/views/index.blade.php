@@ -70,7 +70,7 @@
         </a>
 
         <div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="/logout">
                 <em class="fa fa-power-off mr-1"></em> Logout</a>
         </div>
     </div>

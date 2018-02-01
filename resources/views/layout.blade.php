@@ -34,7 +34,7 @@
 					<li class="nav-item"><a class="nav-link" href="/series"><em class="fas fa-tv"></em> Series</a></li>
 				</ul>
 				
-				<a href="#" class="logout-button"><em class="fas fa-sign-in-alt"></em> Login</a>
+				<a href="/login" class="logout-button"><em class="fas fa-sign-in-alt"></em> Login</a>
 			</nav>
 			
 			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4" style="background-color:#EEEEEE;">
