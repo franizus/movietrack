@@ -30,35 +30,34 @@
             <img src="/img/trakt.png" width=40px> Movie.Track</h1>
     </div>
     <div class="container">
-        <div class="card card-register mx-auto mt-5 bottom5">
-            <h4 class="card-header">Registro</h4>
-            <div class="card-body">
-                <form method="POST" action="/register">
-                    {{ csrf_field() }}
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header">Ingreso al Sistema</div>
+                <div class="card-body">
+                    <form method="POST" action="/login">
+                        {{ csrf_field() }}
 
-                    <div class="form-group">
-                        <label for="cedula">Nombre</label>
-                        <input class="form-control" id="name" name="name" type="text" placeholder="Ingrese su nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="correo">Email</label>
-                        <input class="form-control" id="email" name="email" type="email" placeholder="Ingrese su correo electronico" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="pw">Contraseña</label>
-                        <input class="form-control" id="password" name="password" type="password" placeholder="Contraseña" required>
-                    </div>
-                    <input class="btn btn-primary btn-block" type="submit" value="Registrarse">
-                </form>
+                        <div class="form-group">
+                            <label for="inputUser">Email</label>
+                            <input class="form-control" id="email" name="email" type="email" placeholder="Ingresar su correo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPW">Contraseña</label>
+                            <input class="form-control" id="password" name="password" type="password" placeholder="Ingresar su contraseña" required>
+                        </div>
+                        <input class="btn btn-primary btn-block" type="submit" value="Log In">
+                        <a class="btn btn-danger btn-block" href="/">Cancelar</a>
+                        @include ('errors')
+                    </form>
                 <div class="text-center">
-                    <a class="d-block small mt-3" href="/login">Regresar a Login</a>
+                    <a class="btn btn-link" href="/register">Registrarse</a>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"

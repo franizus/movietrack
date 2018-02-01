@@ -56,16 +56,17 @@
 @endsection
 
 @section ('content')
-<header class="page-header row justify-center">
+<header class="page-header row">
     <div class="col-md-6 col-lg-8">
         <h1 class="float-left text-center text-md-left">Peliculas</h1>
     </div>
 
+    @if (Auth::check())
     <div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right">
         <a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <div class="username mt-1">
-                <h4 class="mb-1">Username</h4>
+                <h4 class="mb-1">{{ Auth::user()->name }}</h4>
             </div>
         </a>
 
@@ -74,7 +75,7 @@
                 <em class="fa fa-power-off mr-1"></em> Logout</a>
         </div>
     </div>
-
+    @endif
     <div class="clear"></div>
 </header>
 <section class="row">
