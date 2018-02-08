@@ -59,8 +59,8 @@
         <?php $var = 0; ?>
         @foreach ($similar as $movieS)
         <?php $var += 1; ?>
-        <div class="col-sm-3 mb-4">
-            <div class="card" style="width:250px">
+        <div class="col-sm-2 mb-4">
+            <div class="card" style="width:200px">
                 <img class="card-img-top" src="{!! 'https://image.tmdb.org/t/p/w500' . $movieS['poster_path'] !!}" alt="Card image" style="width:100%">
                 <div class="card-body">
                     <h4 class="card-title">{{ $movieS['title'] }}</h4>
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        @if ($var == 8)
+        @if ($var == 6)
             @break
         @endif
         @endforeach

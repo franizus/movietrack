@@ -12,7 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('index', compact('movies', 'type'));
+    $api = 'https://api.themoviedb.org/3/movie/popular?api_key=d86068144f769b45826958d1251e8f6d&language=es-ES&page=1&region=us';
+    $movieapi = json_decode(file_get_contents($api), true);
+    $movies = $movieapi['results'];
+    $api = 'https://api.themoviedb.org/3/tv/popular?api_key=d86068144f769b45826958d1251e8f6d&language=es-ES&page=1';
+    $tvapi = json_decode(file_get_contents($api), true);
+    $series = $tvapi['results'];
+    return view('index', compact('movies', 'series'));
 })->name('home');
 
 Route::get('/movies/{type}', function ($type) {

@@ -77,8 +77,8 @@
     <?php $var = 0; ?>
     @foreach ($similar as $serieS)
     <?php $var += 1; ?>
-    <div class="col-sm-3 mb-4">
-        <div class="card" style="width:250px">
+    <div class="col-sm-2 mb-4">
+        <div class="card" style="width:200px">
             <img class="card-img-top" src="{!! 'https://image.tmdb.org/t/p/w500' . $serieS['poster_path'] !!}" alt="Card image" style="width:100%">
             <div class="card-body">
                 <h4 class="card-title">{{ $serieS['original_name'] }}</h4>
@@ -87,7 +87,7 @@
             </div>
         </div>
     </div>
-    @if ($var == 8)
+    @if ($var == 6)
         @break
     @endif
     @endforeach
