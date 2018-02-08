@@ -11,9 +11,14 @@
 
 @section ('content')
 <section class="row">
-    <div class="col-12">
+    <div class="col-10">
         <h3 class="mb-4">
             {{ $serie['name'] . ' (' . explode('-', $serie['first_air_date'])[0] . ')' }}
+        </h3>
+    </div>
+    <div class="col-sm-2">
+        <h3 class="mb-4">
+            <a class="btn btn-success btn-block text-white" onclick="">Seguir</a>
         </h3>
     </div>
     <div class="col-sm-3 mb-4">
@@ -92,7 +97,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-body">
-                <iframe id="iframeYoutube" width="700" height="315"  src="https://www.youtube.com/embed/e80BbX05D7Y" frameborder="0" allowfullscreen></iframe> 
+                <iframe id="iframeYoutube" width="700" height="315"  src="https://www.youtube.com/embed/{!! $trailer['results'][0]['key'] !!}" frameborder="0" allowfullscreen></iframe> 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -35,8 +35,13 @@ Route::get('/movie/{id}', function ($id) {
     $apiTrailer = 'https://api.themoviedb.org/3/movie/' . $id . '/videos?api_key=d86068144f769b45826958d1251e8f6d&language=en-US';
     $trailer = json_decode(file_get_contents($apiTrailer), true);
     $apiSimilar = 'https://api.themoviedb.org/3/movie/' . $id . '/similar?api_key=d86068144f769b45826958d1251e8f6d&language=es-ES';
-    $similar = json_decode(file_get_contents($apiTrailer), true);
-    return view('movie', compact('movie', 'trailer'));
+    $similar = json_decode(file_get_contents($apiSimilar), true);
+    if (isset($similar['results'])) {
+        $similar = $similar['results'];
+    } else {
+        $similar = false;
+    }
+    return view('movie', compact('movie', 'trailer', 'similar'));
 });
 
 Route::get('/serie/{id}', function ($id) {
@@ -46,7 +51,11 @@ Route::get('/serie/{id}', function ($id) {
     $trailer = json_decode(file_get_contents($apiTrailer), true);
     $apiSimilar = 'https://api.themoviedb.org/3/tv/' . $id . '/similar?api_key=d86068144f769b45826958d1251e8f6d&language=es-ES';
     $similar = json_decode(file_get_contents($apiSimilar), true);
-    $similar = $similar['results'];
+    if (isset($similar['results'])) {
+        $similar = $similar['results'];
+    } else {
+        $similar = false;
+    }
     return view('serie', compact('serie', 'trailer', 'similar'));
 });
 
