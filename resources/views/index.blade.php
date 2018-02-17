@@ -2,51 +2,144 @@
 
 @section ('head')
 @extends('layouts.head')
+<link href="/css/jquery.slidey.min.css" rel="stylesheet">
+<style>
+    p {
+        color: #fff;
+        font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    
+    a {
+        color: #fff;
+    }
+    
+    a:visited {
+        color: #fff;
+    }
+    
+    a:hover {
+        color: #fff;
+    }
+</style>
 @endsection
 
 @section ('content')
+<div style="margin-top: -2em;">
+    <div id="slidey" style="display:none;">
+        <ul>
+            @for ($i = 0; $i < 3; $i++)
+            <li><img src="{!! 'https://image.tmdb.org/t/p/w500' . $movies[$i]['backdrop_path'] !!}" alt=" "><p class='title'><a href="{!! '/movie/' . $movies[$i]['id'] !!}">{{ $movies[$i]['title'] }}</a></p><p class='description'>{{ implode(' ', array_slice(explode(' ', $movies[$i]['overview']), 0, 30)) . '...' }}</p></li>
+            @endfor
+            @for ($i = 0; $i < 3; $i++)
+            <li><img src="{!! 'https://image.tmdb.org/t/p/w500' . $series[$i]['backdrop_path'] !!}" alt=" "><p class='title'><a href="{!! '/serie/' . $series[$i]['id'] !!}">{{ $series[$i]['name'] }}</a></p><p class='description'>{{ implode(' ', array_slice(explode(' ', $series[$i]['overview']), 0, 30)) . '...' }}</p></li>
+            @endfor
+        </ul>
+    </div>
+    <script src="/js/jquery.slidey.js"></script>
+    <script src="/js/jquery.dotdotdot.min.js"></script>
+    <script type="text/javascript">
+        $("#slidey").slidey({
+            interval: 8000,
+            listCount: 5,
+            autoplay: false,
+            showList: true
+        });
+        $(".slidey-list-description").dotdotdot();
+    </script>
+</div>
 <section class="row">
-    <div class="col-12">
+    <div class="col-12 top25">
         <h3 class="mb-4">
             Peliculas Destacadas
         </h3>
     </div>
-    <?php $var = 0; ?>
-    @foreach ($movies as $movie)
-    <?php $var += 1; ?>
-    <div class="col-sm-2 mb-2">
-        <div class="card" style="width:200px">
-            <img class="card-img-top" src="{!! 'https://image.tmdb.org/t/p/w500' . $movie['poster_path'] !!}" alt="Card image" style="width:100%">
-            <div class="card-body">
-                <h4 class="card-title">{{ $movie['title'] }}</h4>
-                <a class="btn btn-primary btn-block" onclick="location.href='{!! '/movie/' . $movie['id'] !!}'">Ver mas</a>
+    <div id="owl-demo" class="owl-carousel owl-theme top5" style="background-color:#EEEEEE;">
+        @for ($i = 3; $i < 15; $i++)
+        <div class="item">
+            <div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+                <a href="{!! '/movie/' . $movies[$i]['id'] !!}" class="hvr-shutter-out-horizontal"><img src="{!! 'https://image.tmdb.org/t/p/w185' . $movies[$i]['poster_path'] !!}" style="width: 200px;height: 300px;" class="img-responsive" alt=" " />
+                    <div class="w3l-action-icon"><i class="fas fa-plus" aria-hidden="true"></i></div>
+                </a>
+                <div class="mid-1 agileits_w3layouts_mid_1_home">
+                    <div class="w3l-movie-text">
+                        <h6><a href="{!! '/movie/' . $movies[$i]['id'] !!}">{{ $movies[$i]['title'] }}</a></h6>
+                    </div>
+                    <div class="mid-2 agile_mid_2_home">
+                        <p>{{ explode('-', $movies[$i]['release_date'])[0] }}</p>
+                        <div class="block-stars">
+                            @php
+                            $rate = $movies[$i]['vote_average'];
+                            $rate = ($rate * 5) / 10;
+                            $rate = intval(round($rate));
+                            @endphp
+                            <ul class="w3l-ratings">
+                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                <li><i class="far fa-star" aria-hidden="true"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        @endfor        
     </div>
-    @if ($var == 6)
-        @break
-    @endif
-    @endforeach
-    <div class="col-12">
+    <script src="/js/owl.carousel.js"></script>
+    <script>
+        $("#owl-demo").owlCarousel({
+            autoPlay: 3000, //Set AutoPlay to 3 seconds
+            items : 5,
+            itemsDesktop : [640,4],
+            itemsDesktopSmall : [414,3]
+        });
+    </script> 
+    <div class="col-12 top25">
         <h3 class="mb-4">
             Series Destacadas
         </h3>
     </div>
-    <?php $var = 0; ?>
-    @foreach ($series as $serie)
-    <?php $var += 1; ?>
-    <div class="col-sm-2 mb-4">
-        <div class="card" style="width:200px">
-            <img class="card-img-top" src="{!! 'https://image.tmdb.org/t/p/w500' . $serie['poster_path'] !!}" alt="Card image" style="width:100%">
-            <div class="card-body">
-                <h4 class="card-title">{{ $serie['original_name'] }}</h4>
-                <a class="btn btn-primary btn-block" onclick="location.href='{!! '/serie/' . $serie['id'] !!}'">mas</a>
+    <div id="owl-demo1" class="owl-carousel owl-theme top5 bottom5" style="background-color:#EEEEEE;">
+        @for ($i = 3; $i < 15; $i++)
+        <div class="item">
+            <div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+                <a href="{!! '/serie/' . $series[$i]['id'] !!}" class="hvr-shutter-out-horizontal"><img src="{!! 'https://image.tmdb.org/t/p/w185' . $series[$i]['poster_path'] !!}" style="width: 200px;height: 300px;" class="img-responsive" alt=" " />
+                    <div class="w3l-action-icon"><i class="fas fa-plus" aria-hidden="true"></i></div>
+                </a>
+                <div class="mid-1 agileits_w3layouts_mid_1_home">
+                    <div class="w3l-movie-text">
+                        <h6><a href="{!! '/serie/' . $series[$i]['id'] !!}">{{ $series[$i]['name'] }}</a></h6>
+                    </div>
+                    <div class="mid-2 agile_mid_2_home">
+                        <p>{{ explode('-', $series[$i]['first_air_date'])[0] }}</p>
+                        <div class="block-stars">
+                            @php
+                            $rate = $series[$i]['vote_average'];
+                            $rate = ($rate * 5) / 10;
+                            $rate = intval(round($rate));
+                            @endphp
+                            <ul class="w3l-ratings">
+                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                <li><i class="far fa-star" aria-hidden="true"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        @endfor        
     </div>
-    @if ($var == 6)
-        @break
-    @endif
-    @endforeach
+    <script>
+        $("#owl-demo1").owlCarousel({
+            autoPlay: 4000, //Set AutoPlay to 3 seconds
+            items : 5,
+            itemsDesktop : [640,4],
+            itemsDesktopSmall : [414,3]
+        });
+    </script>
 </section>
 @endsection
