@@ -16,8 +16,11 @@
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     
 <!-- Custom styles for this template -->
+<link href="/css/estilo.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/medile.css" rel='stylesheet' type='text/css' />
 <link href="/css/style.css" rel="stylesheet">
-
+<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+<link href="/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
 <style>
     .modalmy {
         display: none;
@@ -62,11 +65,27 @@
       margin-top:15px;
     }
 
+    .top1 {
+        margin-top:12px;
+    }
+
+    .top25 {
+        margin-top:35px;
+    }
+
+    .bottom5 {
+        margin-bottom: 35px;
+    }
+
     .padding5 {
       padding-right: 45px;
     }
 
     .padding15 {
       padding-left: 0px;
+    }
+
+    h6 {
+        text-transform: none;
     }
 </style>
