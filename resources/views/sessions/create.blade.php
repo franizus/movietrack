@@ -9,14 +9,14 @@
 
                 <div class="form-group">
                     <label for="inputUser">Email</label>
-                    <input class="form-control" id="email" name="email" type="email" placeholder="Ingresar su correo" required>
+                    <input class="form-control" name="email" type="email" placeholder="Ingresar su correo" required>
                 </div>
                 <div class="form-group">
                     <label for="inputPW">Contraseña</label>
-                    <input class="form-control" id="password" name="password" type="password" placeholder="Ingresar su contraseña" required>
+                    <input class="form-control" name="password" type="password" placeholder="Ingresar su contraseña" required>
                 </div>
                 <input class="btn btn-primary btn-block" type="submit" value="Log In">
-                <a class="btn btn-danger btn-block" href="/">Cancelar</a>
+                <a class="btn btn-danger btn-block" href="/" style="background-color:#FF0022">Cancelar</a>
                 @include ('errors')
             </form>
         <div class="text-center">
