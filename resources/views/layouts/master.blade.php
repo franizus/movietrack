@@ -12,6 +12,18 @@
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fas fa-bars"></em></a>
 				
 				<ul class="nav nav-pills flex-column sidebar-nav">
+					<div class="container">
+						<form method="GET" action="/search">
+							<div class="form-row">
+								<div class="col-9">
+									<input type="text" class="form-control" name="query" placeholder="Buscar..." required>
+								</div>
+								<div class="col-3">
+									<button type="submit" class="btn btn-block btn-danger" style="background-color:#FF0022"><i class="fas fa-search"></i></button>
+								</div>
+							</div>
+						</form>
+					</div>
 					@if (Auth::check())
 					<li class="nav-item"><a class="nav-link" href="/user/{{ auth()->id() }}"><em class="fas fa-user"></em> <strong>Mi Perfil</strong></a></li> 
 					@endif
