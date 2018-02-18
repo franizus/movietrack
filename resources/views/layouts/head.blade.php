@@ -1,9 +1,9 @@
 <meta charset="utf-8">
-	
+
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
+
 <link rel="icon" href="/img/trakt.png">
-	
+
 <title>MovieTrack</title>
 
 <!-- Bootstrap core CSS -->
@@ -11,10 +11,10 @@
 
 <!--Fonts-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-    
+
 <!-- Icons -->
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    
+
 <!-- Custom styles for this template -->
 <link href="/css/estilo.css" rel="stylesheet" type="text/css" media="all" />
 <link href="/css/medile.css" rel='stylesheet' type='text/css' />
@@ -45,12 +45,12 @@
         background-color: rgba(0, 0, 0, 0.4);
         /* Black w/ opacity */
     }
-
+    
     .modalmy-content {
         display: -ms-flexbox;
         display: flex;
         -ms-flex-direction: column;
-            flex-direction: column;
+        flex-direction: column;
         background-color: #fefefe;
         margin: auto;
         padding: 20px;
@@ -60,31 +60,35 @@
         background-clip: padding-box;
         outline: 0;
     }
-
+    
     .top5 {
-      margin-top:15px;
+        margin-top:15px;
     }
-
+    
     .top1 {
         margin-top:12px;
     }
-
+    
     .top25 {
         margin-top:25px;
     }
-
+    
     .bottom5 {
         margin-bottom: 35px;
     }
 
+    .bottom25 {
+        margin-bottom: 55px;
+    }
+    
     .padding5 {
-      padding-right: 45px;
+        padding-right: 45px;
     }
-
+    
     .padding15 {
-      padding-left: 0px;
+        padding-left: 0px;
     }
-
+    
     h6 {
         text-transform: none;
     }
