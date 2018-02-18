@@ -28,10 +28,10 @@
     <div id="slidey" style="display:none;">
         <ul>
             @for ($i = 0; $i < 3; $i++)
-            <li><img src="{!! 'https://image.tmdb.org/t/p/w500' . $movies[$i]['backdrop_path'] !!}" alt=" "><p class='title'><a href="{!! '/movie/' . $movies[$i]['id'] !!}">{{ $movies[$i]['title'] }}</a></p><p class='description'>{{ implode(' ', array_slice(explode(' ', $movies[$i]['overview']), 0, 30)) . '...' }}</p></li>
+            <li><img src="{!! 'https://image.tmdb.org/t/p/w1280' . $movies[$i]['backdrop_path'] !!}" alt=" "><p class='title'><a href="{!! '/movie/' . $movies[$i]['id'] !!}">{{ $movies[$i]['title'] }}</a></p><p class='description'>{{ implode(' ', array_slice(explode(' ', $movies[$i]['overview']), 0, 30)) . '...' }}</p></li>
             @endfor
             @for ($i = 0; $i < 3; $i++)
-            <li><img src="{!! 'https://image.tmdb.org/t/p/w500' . $series[$i]['backdrop_path'] !!}" alt=" "><p class='title'><a href="{!! '/serie/' . $series[$i]['id'] !!}">{{ $series[$i]['name'] }}</a></p><p class='description'>{{ implode(' ', array_slice(explode(' ', $series[$i]['overview']), 0, 30)) . '...' }}</p></li>
+            <li><img src="{!! 'https://image.tmdb.org/t/p/w1280' . $series[$i]['backdrop_path'] !!}" alt=" "><p class='title'><a href="{!! '/serie/' . $series[$i]['id'] !!}">{{ $series[$i]['name'] }}</a></p><p class='description'>{{ implode(' ', array_slice(explode(' ', $series[$i]['overview']), 0, 30)) . '...' }}</p></li>
             @endfor
         </ul>
     </div>
