@@ -70,7 +70,7 @@
     }
 
     .top25 {
-        margin-top:35px;
+        margin-top:25px;
     }
 
     .bottom5 {

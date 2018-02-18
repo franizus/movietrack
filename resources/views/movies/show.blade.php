@@ -21,14 +21,30 @@
 <section class="row" style="margin-top: -2em;">
     <div class="col-10">
         <h3 class="mb-4">
-            {{ $movie['original_title'] . ' (' . explode('-', $movie['release_date'])[0] . ')' }}
+            {{ $movie['title'] . ' (' . explode('-', $movie['release_date'])[0] . ')' }}
         </h3>
     </div>
+    @if (Auth::check())
     <div class="col-sm-2">
         <h3 class="mb-4">
-            <a class="btn btn-success btn-block text-white" onclick="">Seguir</a>
+            @if (! Illuminate\Support\Facades\DB::table('movies')->where([['user_id', auth()->id()], ['movie_id', $id],])->exists())
+            <form method="POST" action="/movie/{{ $id }}/follow">
+                {{ csrf_field() }}
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-block btn-success">Seguir</button>
+                </div>
+            </form>
+            @else
+            <form method="POST" action="/movie/{{ $id }}/unfollow">
+                {{ csrf_field() }}
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-block btn-danger"> Dejar de Seguir</button>
+                </div>
+            </form>
+            @endif
         </h3>
     </div>
+    @endif
     @if (isset($trailer['results']))
     <div class="col-sm-3 mb-4 w3l-movie-gride-agile w3l-movie-gride-agile1">
         <a href="javascript:changeVideo('{!! $trailer['results'][0]['key'] !!}')" class="hvr-shutter-out-horizontal">
@@ -65,8 +81,54 @@
         <strong>Presupuesto</strong>
         <p>&dollar; {{ $movie['budget'] }}</p>
     </div>
+    <div class="col-12 top25">
+        <h3 class="mb-4">
+            Comentarios
+        </h3>
+        <div class="container">
+            <ul class="list-group">
+                @foreach ($comments as $comment)
+                <li class="list-group-item">
+                    <font size="4">
+                        <strong>
+                            @php
+                            $user = Illuminate\Support\Facades\DB::table('users')->where('id', $comment->user_id)->first();
+                            Carbon\Carbon::setLocale('es');
+                            @endphp
+                            <u><span title="{{ $user->email }}">{{ $user->name }}</span></u>
+                            {{ ' ' . Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}:
+                        </strong>
+                        {{ $comment->body }}
+                    </font>
+                </li>
+                @endforeach
+            </ul>
+            @if (Auth::check())
+            <div class="card" style="padding:2em;margin-top: -2em;padding-bottom:1em;">
+                <div class="card-block">
+                    <form method="POST" action="/movie/{{ $id }}/comments">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <textarea class="form-control" name="body" placeholder="Ingrese su comentario" required></textarea>
+                        </div>
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-primary">Agregar Comentario</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @else
+            <div class="text-center" style="margin-top: -2em;">
+                <font size="4">
+                    <strong>
+                        Por favor <a href="/login">ingrese</a> o <a href="/register">registrese</a> para comentar.
+                    </strong>
+                </font>
+            </div>
+			@endif
+        </div>
+    </div>
     @if ($similar)
-    <br></br>
     <div class="col-12 top25">
         <h3 class="mb-4">
             Peliculas Similares
