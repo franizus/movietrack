@@ -73,11 +73,12 @@
                             $rate = intval(round($rate));
                             @endphp
                             <ul class="w3l-ratings">
+                                @for ($j = 0; $j < $rate; $j++)
                                 <li><i class="fas fa-star" aria-hidden="true"></i></li>
-                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
-                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                @endfor
+                                @for ($j = 0; $j < 5 - $rate; $j++)
                                 <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                @endfor
                             </ul>
                         </div>
                     </div>
@@ -120,11 +121,12 @@
                             $rate = intval(round($rate));
                             @endphp
                             <ul class="w3l-ratings">
+                                @for ($j = 0; $j < $rate; $j++)
                                 <li><i class="fas fa-star" aria-hidden="true"></i></li>
-                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
-                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                @endfor
+                                @for ($j = 0; $j < 5 - $rate; $j++)
                                 <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                @endfor
                             </ul>
                         </div>
                     </div>
