@@ -24,7 +24,7 @@ class RegistrationController extends Controller
             'name' => request('name'),
             'email' => request('email'),
             'password' => bcrypt(request('password'))
-            ]);
+        ]);
 
         auth()->login($user);
 
