@@ -41,44 +41,72 @@
             @endswitch
         </h3>
     </div>
-    <div class="w3_agile_featured_movies">
-        @if ($page > 1)
-        @php
-        $var = 4;
-        $var1 = 28;
-        @endphp
-        @else
-        @php
-        $var = 0;
-        $var1 = 24;
-        @endphp
-        @endif
-        @for ($i = $var; $i < $var1; $i++)
-        <div class="col-md-2 w3l-movie-gride-agile">
-            <a href="{!! '/movie/' . $movies[$i]['id'] !!}" class="hvr-shutter-out-horizontal"><img src="{!! 'https://image.tmdb.org/t/p/w185' . $movies[$i]['poster_path'] !!}" style="width: 200px;height: 300px;" title="{!! $movies[$i]['title'] !!}" class="img-responsive" alt=" " />
-                <div class="w3l-action-icon"><i class="fas fa-plus" aria-hidden="true"></i></div>
-            </a>
-            <div class="mid-1 agileits_w3layouts_mid_1_home">
-                <div class="w3l-movie-text">
-                    <h6><a href="{!! '/movie/' . $movies[$i]['id'] !!}"></a></h6>							
-                </div>
+    @if ($page > 1)
+    @php
+    $var = 4;
+    $var1 = 28;
+    @endphp
+    @else
+    @php
+    $var = 0;
+    $var1 = 24;
+    @endphp
+    @endif
+    @for ($i = $var; $i < $var1; $i++)
+    <div class="col-md-6 col-lg-4 col-xl-2 mb-4">
+        <div class="card" style="width:200px">
+            <div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+                <a href="{!! '/movie/' . $movies[$i]['id'] !!}" class="hvr-shutter-out-horizontal" style="margin-left: -18px;">
+                    <img class="card-img-top" src="{!! 'https://image.tmdb.org/t/p/w185' . $movies[$i]['poster_path'] !!}" alt="Card image" style="width: 200px;height: 300px;" title="{!! $movies[$i]['title'] !!}" />
+                    <div class="w3l-action-icon"><i class="fas fa-plus" aria-hidden="true"></i></div>
+                </a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-center">
+                    {{ explode('-', $movies[$i]['release_date'])[0] }}
+                </h5>
                 <div class="mid-2 agile_mid_2_home">
-                    <p>{{ explode('-', $movies[$i]['release_date'])[0] }}</p>
+                    <p>Rate:</p>
+                    @php
+                    $rate = $movies[$i]['vote_average'];
+                    $rate = ($rate * 5) / 10;
+                    $rate = intval(round($rate));
+                    @endphp
                     <div class="block-stars">
                         <ul class="w3l-ratings">
+                            @for ($j = 0; $j < $rate; $j++)
                             <li><i class="fas fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fas fa-star" aria-hidden="true"></i></li>
-                            <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                            @endfor
+                            @for ($j = 0; $j < 5 - $rate; $j++)
                             <li><i class="far fa-star" aria-hidden="true"></i></li>
-                            <li><i class="far fa-star" aria-hidden="true"></i></li>
+                            @endfor
                         </ul>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
-        </div>
-        @endfor
-    </div>
+            @if (Auth::check())
+            <div class="container">
+                @if (! Illuminate\Support\Facades\DB::table('movies')->where([['user_id', auth()->id()], ['movie_id', $movies[$i]['id']],])->exists())
+                <form id="formF" method="POST" action="/movie/{{ $movies[$i]['id'] }}/follow">
+                    {{ csrf_field() }}
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-block btn-success">Seguir</button>
+                    </div>
+                </form>
+                @else
+                <form id="formU" method="POST" action="/movie/{{ $movies[$i]['id'] }}/unfollow">
+                    {{ csrf_field() }}
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-block btn-danger">No Seguir</button>
+                    </div>
+                </form>
+                @endif
+            </div>
+            @endif
+        </div>  
+    </div> 
+    @endfor
     <div class="col-4 bottom5">
         @if ($page > 1)
         <a class="btn btn-primary" href="{!! '/movies/' . $type . '/' . ($page - 1) !!}">Anterior</a>
