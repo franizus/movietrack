@@ -45,19 +45,19 @@
         </h3>
     </div>
     @endif
-    @if (isset($trailer['results']))
-    <div class="col-sm-3 mb-4 w3l-movie-gride-agile w3l-movie-gride-agile1">
-        <a href="javascript:changeVideo('{!! $trailer['results'][0]['key'] !!}')" class="hvr-shutter-out-horizontal">
+    @if ($trailer)
+    <div class="col-lg-3 mb-4 w3l-movie-gride-agile w3l-movie-gride-agile1">
+        <a href="javascript:changeVideo('{!! $trailer[0]['key'] !!}')" class="hvr-shutter-out-horizontal">
             <img src="{!! 'https://image.tmdb.org/t/p/w500' . $movie['poster_path'] !!}" height="450px" class="img-responsive" />
             <div class="w3l-action-icon"><i class="fas fa-video" aria-hidden="true"></i></div>
         </a>
     </div>
     @else
-    <div class="col-sm-3 mb-4">
+    <div class="col-lg-3 mb-4">
         <img src="{!! 'https://image.tmdb.org/t/p/w500' . $movie['poster_path'] !!}" height="450px"/>
     </div>
     @endif
-    <div class="col-sm mb-4">
+    <div class="col-lg mb-4">
         <strong>Resumen</strong>
         <p>{{ $movie['overview'] }}</p>
         <strong>Fecha de estreno</strong>
@@ -154,11 +154,12 @@
                             $rate = intval(round($rate));
                             @endphp
                             <ul class="w3l-ratings">
+                                @for ($j = 0; $j < $rate; $j++)
                                 <li><i class="fas fa-star" aria-hidden="true"></i></li>
-                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
-                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                @endfor
+                                @for ($j = 0; $j < 5 - $rate; $j++)
                                 <li><i class="far fa-star" aria-hidden="true"></i></li>
-                                <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                @endfor
                             </ul>
                         </div>
                     </div>
@@ -183,7 +184,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="background-color: #272727;">
                 <div class="modal-body">
-                    <iframe id="iframeYoutube" width="700" height="415"  src="https://www.youtube.com/embed/{!! $trailer['results'][0]['key'] !!}" frameborder="0" allowfullscreen></iframe> 
+                    <iframe id="iframeYoutube" width="700" height="415" frameborder="0" allowfullscreen></iframe> 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
