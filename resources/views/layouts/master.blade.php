@@ -12,7 +12,10 @@
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fas fa-bars"></em></a>
 				
 				<ul class="nav nav-pills flex-column sidebar-nav">
-					<li class="nav-item" style="pointer-events:none;"><a class="nav-link" href=""><em class="fas fa-film"></em> Peliculas <span class="sr-only">(current)</span></a>
+					@if (Auth::check())
+					<li class="nav-item"><a class="nav-link" href="/user/{{ auth()->id() }}"><em class="fas fa-user"></em> <strong>Mi Perfil</strong></a></li> 
+					@endif
+					<li class="nav-item" style="pointer-events:none;"><a class="nav-link" href=""><em class="fas fa-film"></em> <strong>Peliculas</strong></a>
 						<ul style="margin-left: 2em;pointer-events:auto;">
 							<li>
 								<a class="nav-link"  href="/movies/popular/1">Populares</a>
@@ -28,7 +31,7 @@
 							</li>
 						</ul>
 					</li> 
-					<li class="nav-item" style="pointer-events:none;"><a class="nav-link top5" href=""><em class="fas fa-tv"></em> Series</a>
+					<li class="nav-item" style="pointer-events:none;"><a class="nav-link top5" href=""><em class="fas fa-tv"></em> <strong>Series</strong></a>
 						<ul style="margin-left: 2em;pointer-events:auto;">
 							<li>
 								<a class="nav-link" href="/series/popular/1">Populares</a>
@@ -70,8 +73,8 @@
 					</a>
 					
 					<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
-						<a class="dropdown-item" href="/logout">
-							<em class="fa fa-power-off mr-1"></em> Logout</a>
+						<a class="dropdown-item" href="/logout" style="color: black;">
+							<i class="fas fa-power-off"></i> Logout</a>
 						</div>
 					</div>
 					@endif
