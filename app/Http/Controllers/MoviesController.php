@@ -61,10 +61,15 @@ class MoviesController extends Controller
         $movie = $this->getMovie($id);
         $trailer = $this->getMovieContent($id, 'videos', 'en-US');
         $similar = $this->getMovieContent($id, 'similar', 'es-ES');
-        if (isset($similar['results'])) {
+        if (isset($similar['results']) && sizeof($similar['results']) > 0) {
             $similar = $similar['results'];
         } else {
             $similar = false;
+        }
+        if (isset($trailer['results']) && sizeof($trailer['results']) > 0) {
+            $trailer = $trailer['results'];
+        } else {
+            $trailer = false;
         }
         $comments = DB::table('comments')->where('movie_id', $id)->get();
         return view('movies.show', compact('movie', 'trailer', 'similar', 'comments', 'id'));

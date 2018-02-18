@@ -60,10 +60,15 @@ class SeriesController extends Controller
         $serie = $this->getSerie($id);
         $trailer = $this->getSerieContent($id, 'videos', 'en-US');
         $similar = $this->getSerieContent($id, 'similar', 'es-ES');
-        if (isset($similar['results'])) {
+        if (isset($similar['results']) && sizeof($similar['results']) > 0) {
             $similar = $similar['results'];
         } else {
             $similar = false;
+        }
+        if (isset($trailer['results']) && sizeof($trailer['results']) > 0) {
+            $trailer = $trailer['results'];
+        } else {
+            $trailer = false;
         }
         $comments = DB::table('comments')->where('serie_id', $id)->get();
         return view('series.show', compact('serie', 'trailer', 'similar', 'id', 'comments'));
