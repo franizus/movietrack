@@ -8,6 +8,8 @@ Route::get('/', function () {
     return view('index', compact('movies', 'series'));
 })->name('home');
 
+Route::get('/search/', 'SearchController@show');
+
 Route::get('/movies/{type}/{page}', 'MoviesController@index');
 Route::get('/movie/{id}', 'MoviesController@show');
 Route::post('/movie/{id}/comments', 'CommentsController@storeMovie');
@@ -21,6 +23,7 @@ Route::post('/serie/{id}/follow', 'SeriesController@store');
 Route::post('/serie/{id}/unfollow', 'SeriesController@destroy');
 Route::get('/serie/{id}/{season}', 'SeriesController@showSeason');
 
+Route::post('/user/{id}', 'UserController@update');
 Route::get('/user/{id}', 'UserController@show');
 
 Route::get('/register', 'RegistrationController@create');
