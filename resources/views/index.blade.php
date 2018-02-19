@@ -1,142 +1,147 @@
-@extends ('layout')
+@extends ('layouts.master', ['tipo' => 'Bienvenido'])
 
-@section ('style')
+@section ('head')
+@extends('layouts.head')
+<link href="/css/jquery.slidey.min.css" rel="stylesheet">
 <style>
-    .modalmy {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        padding-top: 100px;
-        padding-left: 250px;
-        /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4);
-        /* Black w/ opacity */
+    p {
+        color: #fff;
+        font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
-
-    .modalmy-content {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-direction: column;
-            flex-direction: column;
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 60%;
-        border-radius: 0.3rem;
-        background-clip: padding-box;
-        outline: 0;
+    
+    a {
+        color: #fff;
     }
-
-    .top5 {
-      margin-top:15px;
+    
+    a:visited {
+        color: #fff;
     }
-
-    .padding5 {
-      padding-right: 45px;
-    }
-
-    .padding15 {
-      padding-left: 0px;
+    
+    a:hover {
+        color: #fff;
     }
 </style>
 @endsection
 
 @section ('content')
-<header class="page-header row">
-    <div class="col-md-6 col-lg-8">
-        <h1 class="float-left text-center text-md-left">Peliculas</h1>
+<div style="margin-top: -2em;">
+    <div id="slidey" style="display:none;">
+        <ul>
+            @for ($i = 0; $i < 3; $i++)
+            <li><img src="{!! 'https://image.tmdb.org/t/p/w1280' . $movies[$i]['backdrop_path'] !!}" alt=" "><p class='title'><a href="{!! '/movie/' . $movies[$i]['id'] !!}">{{ $movies[$i]['title'] }}</a></p><p class='description'>{{ implode(' ', array_slice(explode(' ', $movies[$i]['overview']), 0, 30)) . '...' }}</p></li>
+            @endfor
+            @for ($i = 0; $i < 3; $i++)
+            <li><img src="{!! 'https://image.tmdb.org/t/p/w1280' . $series[$i]['backdrop_path'] !!}" alt=" "><p class='title'><a href="{!! '/serie/' . $series[$i]['id'] !!}">{{ $series[$i]['name'] }}</a></p><p class='description'>{{ implode(' ', array_slice(explode(' ', $series[$i]['overview']), 0, 30)) . '...' }}</p></li>
+            @endfor
+        </ul>
     </div>
-
-    @if (Auth::check())
-    <div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right">
-        <a class="btn btn-stripped dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            <div class="username mt-1">
-                <h4 class="mb-1">{{ Auth::user()->name }}</h4>
-            </div>
-        </a>
-
-        <div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="/logout">
-                <em class="fa fa-power-off mr-1"></em> Logout</a>
-        </div>
-    </div>
-    @endif
-    <div class="clear"></div>
-</header>
+    <script src="/js/jquery.slidey.js"></script>
+    <script src="/js/jquery.dotdotdot.min.js"></script>
+    <script type="text/javascript">
+        $("#slidey").slidey({
+            interval: 8000,
+            listCount: 5,
+            autoplay: false,
+            showList: true
+        });
+        $(".slidey-list-description").dotdotdot();
+    </script>
+</div>
 <section class="row">
-    <div class="col-12">
-        <h3 class="mb-4">Mas Populares</h3>
+    <div class="col-12 top25">
+        <h3 class="mb-4">
+            Peliculas Destacadas
+        </h3>
     </div>
-    @foreach ($movies as $movie)
-    <div class="col-3 mb-4">
-        <div class="card" style="width:250px">
-            <img class="card-img-top" src="{!! 'https://image.tmdb.org/t/p/w500' . $movie['poster_path'] !!}" alt="Card image" style="width:100%">
-            <div class="card-body">
-                <h4 class="card-title">{{ $movie['title'] }}</h4>
-                <p class="card-text">Rating: {{ $movie['vote_average'] }}</p>
-                <a class="btn btn-primary" onclick="openModal('{!! 'myModal' . $movie['id'] !!}')">Ver mas</a>
-            </div>
-        </div>
-    </div>
-    <div id="{!! 'myModal' . $movie['id'] !!}" class="modalmy">
-        <div class="modalmy-content">
-            <div class="modal-header">
-                <h4 class="modal-title">{{ $movie['title'] }}</h4>
-                <button type="button" class="close" onclick="getElementById('{!! 'myModal' . $movie['id'] !!}').style.display ='none';">&times;</button>
-            </div>
-            <div class="container">
-                <img src="{!! 'https://image.tmdb.org/t/p/w500' . $movie['backdrop_path'] !!}" width="100%">
-                <div class="row top5">
-                    <div class="col-4 text-right padding5">
-                        <b>Fecha de Estreno:</b>
+    <div id="owl-demo" class="owl-carousel owl-theme top5" style="background-color:#EEEEEE;">
+        @for ($i = 3; $i < 15; $i++)
+        <div class="item">
+            <div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+                <a href="{!! '/movie/' . $movies[$i]['id'] !!}" class="hvr-shutter-out-horizontal"><img src="{!! 'https://image.tmdb.org/t/p/w185' . $movies[$i]['poster_path'] !!}" style="width: 200px;height: 300px;" class="img-responsive" alt=" " />
+                    <div class="w3l-action-icon"><i class="fas fa-plus" aria-hidden="true"></i></div>
+                </a>
+                <div class="mid-1 agileits_w3layouts_mid_1_home">
+                    <div class="w3l-movie-text">
+                        <h6><a href="{!! '/movie/' . $movies[$i]['id'] !!}">{{ $movies[$i]['title'] }}</a></h6>
                     </div>
-                    <div class="col text-justify padding15">
-                    {{ $movie['release_date'] }}
-                    </div>
-                </div>
-                <div class="row top5">
-                    <div class="col-4 text-right padding5">
-                        <b>Sinopsis:</b>
-                    </div>
-                    <div class="col text-justify padding15">
-                    {{ $movie['overview'] }}
+                    <div class="mid-2 agile_mid_2_home">
+                        <p>{{ explode('-', $movies[$i]['release_date'])[0] }}</p>
+                        <div class="block-stars">
+                            @php
+                            $rate = $movies[$i]['vote_average'];
+                            $rate = ($rate * 5) / 10;
+                            $rate = intval(round($rate));
+                            @endphp
+                            <ul class="w3l-ratings">
+                                @for ($j = 0; $j < $rate; $j++)
+                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                @endfor
+                                @for ($j = 0; $j < 5 - $rate; $j++)
+                                <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                @endfor
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endfor        
     </div>
-    @endforeach
+    <script src="/js/owl.carousel.js"></script>
+    <script>
+        $("#owl-demo").owlCarousel({
+            autoPlay: 3000, //Set AutoPlay to 3 seconds
+            items : 5,
+            itemsDesktop : [640,4],
+            itemsDesktopSmall : [414,3]
+        });
+    </script> 
+    <div class="col-12 top25">
+        <h3 class="mb-4">
+            Series Destacadas
+        </h3>
+    </div>
+    <div id="owl-demo1" class="owl-carousel owl-theme top5 bottom5" style="background-color:#EEEEEE;">
+        @for ($i = 3; $i < 15; $i++)
+        <div class="item">
+            <div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+                <a href="{!! '/serie/' . $series[$i]['id'] !!}" class="hvr-shutter-out-horizontal"><img src="{!! 'https://image.tmdb.org/t/p/w185' . $series[$i]['poster_path'] !!}" style="width: 200px;height: 300px;" class="img-responsive" alt=" " />
+                    <div class="w3l-action-icon"><i class="fas fa-plus" aria-hidden="true"></i></div>
+                </a>
+                <div class="mid-1 agileits_w3layouts_mid_1_home">
+                    <div class="w3l-movie-text">
+                        <h6><a href="{!! '/serie/' . $series[$i]['id'] !!}">{{ $series[$i]['name'] }}</a></h6>
+                    </div>
+                    <div class="mid-2 agile_mid_2_home">
+                        <p>{{ explode('-', $series[$i]['first_air_date'])[0] }}</p>
+                        <div class="block-stars">
+                            @php
+                            $rate = $series[$i]['vote_average'];
+                            $rate = ($rate * 5) / 10;
+                            $rate = intval(round($rate));
+                            @endphp
+                            <ul class="w3l-ratings">
+                                @for ($j = 0; $j < $rate; $j++)
+                                <li><i class="fas fa-star" aria-hidden="true"></i></li>
+                                @endfor
+                                @for ($j = 0; $j < 5 - $rate; $j++)
+                                <li><i class="far fa-star" aria-hidden="true"></i></li>
+                                @endfor
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endfor        
+    </div>
+    <script>
+        $("#owl-demo1").owlCarousel({
+            autoPlay: 4000, //Set AutoPlay to 3 seconds
+            items : 5,
+            itemsDesktop : [640,4],
+            itemsDesktopSmall : [414,3]
+        });
+    </script>
 </section>
-@endsection
-
-@section ('script')
-<script>
-    function openModal(modale) 
-    {
-        var modal = document.getElementById(modale);
-        modal.style.display = "block";
-        window.onclick = function (event) 
-        {
-            if (event.target == modal) 
-            {
-                modal.style.display = "none";
-            }
-        }
-    }
-</script>
 @endsection

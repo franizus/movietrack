@@ -2,6 +2,10 @@
 
 return [
 
+  //Esta clase sirve para gestionar le manejo distribuido de las Databases
+  //de datos de manera que si una persona actualiza algo en la base
+  //esta actualizacion se reflejada en la base de datos para todos los ususarios.
+
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name

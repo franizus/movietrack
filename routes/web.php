@@ -1,33 +1,30 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers;
 
 Route::get('/', function () {
-    $movieapi = json_decode(file_get_contents('https://api.themoviedb.org/3/movie/popular?api_key=d86068144f769b45826958d1251e8f6d&language=es-ES&page=1'), true);
-    $movies = $movieapi['results'];
-    return view('index', compact('movies'));
+    $movies = Controllers\MoviesController::getMovies('popular', 1);
+    $series = Controllers\SeriesController::getSeries('popular', 1);
+    return view('index', compact('movies', 'series'));
 })->name('home');
 
-Route::get('/series', function () {
-    $tvapi = json_decode(file_get_contents('https://api.themoviedb.org/3/tv/popular?api_key=d86068144f769b45826958d1251e8f6d&language=es-ES&page=1'), true);
-    $series = $tvapi['results'];
-    return view('series', compact('series'));
-});
+Route::get('/search/', 'SearchController@show');
 
-Route::get('/register', function () {
-    $movieapi = json_decode(file_get_contents('https://api.themoviedb.org/3/movie/popular?api_key=d86068144f769b45826958d1251e8f6d&language=es-ES&page=1'), true);
-    $movies = $movieapi['results'];
-    return view('index', compact('movies'));
-});
+Route::get('/movies/{type}/{page}', 'MoviesController@index');
+Route::get('/movie/{id}', 'MoviesController@show');
+Route::post('/movie/{id}/comments', 'CommentsController@storeMovie');
+Route::post('/movie/{id}/follow', 'MoviesController@store');
+Route::post('/movie/{id}/unfollow', 'MoviesController@destroy');
+
+Route::get('/series/{type}/{page}', 'SeriesController@index');
+Route::get('/serie/{id}', 'SeriesController@show');
+Route::post('/serie/{id}/comments', 'CommentsController@storeSerie');
+Route::post('/serie/{id}/follow', 'SeriesController@store');
+Route::post('/serie/{id}/unfollow', 'SeriesController@destroy');
+Route::get('/serie/{id}/{season}', 'SeriesController@showSeason');
+
+Route::post('/user/{id}', 'UserController@update');
+Route::get('/user/{id}', 'UserController@show');
 
 Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
