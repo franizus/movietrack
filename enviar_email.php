@@ -49,13 +49,7 @@ if(isset($_POST['email'])) {
 
 //Verificar que la dirección de correo sea válida 
     
-   $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
- 
-  if(!preg_match($email_exp,$Email_from)) {
- 
-    $error_message .= 'La dirección de correo proporcionada no es válida.<br />';
- 
-  }
+
 
 //Validadacion de cadenas de texto
 
