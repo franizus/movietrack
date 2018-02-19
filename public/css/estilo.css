@@ -1013,7 +1013,50 @@ h3.head {
 	-moz-opacity: 0;
 	filter: alpha(opacity=0);
 }
-
+/*-- //to-top --*/
+/*-----start-responsive-design------*/
+@media (max-width:1280px){
+	h4.latest-text {
+		margin-left: 1em !important;
+	}
+}
+@media (max-width:1080px){
+	.w3l_sign_in_register {
+		width: 30%;
+	}
+	.w3_search {
+		margin-left: 4em;
+	}
+	.w3l-movie-gride-agile1 {
+		width: 100% !important;
+	}
+	.w3l-action-icon i {
+		font-size: 2em !important;
+	}
+	.w3l-movie-gride-agile:hover .w3l-action-icon {
+		top: 42%;
+	}
+	.w3l-movie-text h6 a {
+		font-size: 1.31em !important;
+	}
+	.agile_tv_series_grid_right {
+		min-height: 258px;
+		padding: 2em 2em 0;
+		width: 48.6%;
+	}
+	p.fexi_header {
+		padding-bottom: .5em;
+	}
+	.w3ls_footer_grid_right a {
+		width: 35%;
+		margin-left: 17em;
+	}
+	.w3ls_footer_grid_left1_pos {
+		width: 100%;
+	}
+	.w3ls_footer_grid1_right {
+		padding: 0;
+	}
 	.w3ls_footer_grid1_right ul li {
 		margin-left: 1em;
 	}
