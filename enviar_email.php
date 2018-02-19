@@ -24,7 +24,13 @@ if(isset($_POST['email'])) {
  
     // Se valida que los campos del formulairo estén llenos
  
-
+    if(!isset($_POST['Nombre']) ||
+ 
+        !isset($_POST['Telefono']) ||
+ 
+        !isset($_POST['Email']) ||
+ 
+        !isset($_POST['Mensaje']) ||
  
         died('Lo sentimos pero parece haber un problema con los datos enviados.');       
  
