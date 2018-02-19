@@ -1,5 +1,6 @@
 <?php
 
+//esta migracion es para poder crear la tabla de los comentarios que cada pelicula y serie de la api tiene en el sistema movie track
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
