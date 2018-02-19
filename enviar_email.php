@@ -103,7 +103,22 @@ if(isset($_POST['email'])) {
  
     $email_message .= "Mensaje: ".clean_string($Mensaje)."\n";
   
-
+ 
+//Encabezados
+ 
+$headers = 'From: '.$Email_from."\r\n".
+ 
+'Reply-To: '.$Email_from."\r\n" .
+ 
+'X-Mailer: PHP/' . phpversion();
+ 
+@mail($email_to, $email_subject, $email_message, $headers);  
+ 
+?>
+ 
+<!-- Mensaje de Éxito-->
+ 
+Muchas Gracias! Proximamente Estaremos en Contacto.
  
 <?php 
 }
