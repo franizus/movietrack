@@ -9,11 +9,11 @@
         padding-right: 15px;
         padding-left: 15px;
     }
-    
+
     .col-md-2 {
         float: left;
     }
-    
+
     .col-md-2 {
         width: 16.66666667%;
     }
@@ -23,7 +23,7 @@
 @section ('content')
 <section class="row" style="margin-top: -2em;">
     <div class="col-12">
-        <h3 class="mb-4">
+        <h3 class="mb-4"> <!-- ESTA SECCION DE CODIGO CONTROLA QUE SE MOSTRARA EN EL CONTENIDO DE LA CATEGORIA Peliculas, DEPENDIENDO SI LA SELECCION ES POPULAR, EN CARTELERA O PROXIMA-->
             @switch($type)
             @case('popular')
             Populares
@@ -104,8 +104,8 @@
                 @endif
             </div>
             @endif
-        </div>  
-    </div> 
+        </div>
+    </div>
     @endfor
     <div class="col-4 bottom5">
         @if ($page > 1)
