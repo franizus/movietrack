@@ -4,13 +4,13 @@
 	@yield('head')
 </head>
 <body>
-	<div class="container-fluid" id="wrapper">
+	<div class="container-fluid" id="wrapper"><!-- este contenedor alberga a la columna izquierda de la pagina principal, es decir donde se decide si ver peliculas o series, tambien contiene el login -->
 		<div class="row">
 			<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
 				<h1 class="site-title"><a href="/"><img src="/img/trakt.png" width=25px> Movie.Track</a></h1>
-				
+
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fas fa-bars"></em></a>
-				
+
 				<ul class="nav nav-pills flex-column sidebar-nav">
 					<div class="container">
 						<form method="GET" action="/search">
@@ -25,7 +25,7 @@
 						</form>
 					</div>
 					@if (Auth::check())
-					<li class="nav-item"><a class="nav-link" href="/user/{{ auth()->id() }}"><em class="fas fa-user"></em> <strong>Mi Perfil</strong></a></li> 
+					<li class="nav-item"><a class="nav-link" href="/user/{{ auth()->id() }}"><em class="fas fa-user"></em> <strong>Mi Perfil</strong></a></li>
 					@endif
 					<li class="nav-item" style="pointer-events:none;"><a class="nav-link" href=""><em class="fas fa-film"></em> <strong>Peliculas</strong></a>
 						<ul style="margin-left: 2em;pointer-events:auto;">
@@ -42,7 +42,7 @@
 								<a class="nav-link" href="/movies/now_playing/1">En Cartelera</a>
 							</li>
 						</ul>
-					</li> 
+					</li>
 					<li class="nav-item" style="pointer-events:none;"><a class="nav-link top5" href=""><em class="fas fa-tv"></em> <strong>Series</strong></a>
 						<ul style="margin-left: 2em;pointer-events:auto;">
 							<li>
@@ -58,13 +58,13 @@
 								<a class="nav-link" href="/series/on_the_air/1">Actualmente en TV</a>
 							</li>
 						</ul>
-					</li> 
+					</li>
 				</ul>
 				@if (! Auth::check())
 				<a href="/login" class="logout-button d-none d-md-block"><em class="fas fa-sign-in-alt"></em> Login</a>
 				@endif
 			</nav>
-			
+
 			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4" style="background-color:#EEEEEE;">
 				<header class="page-header row">
 					@if (!Auth::check())
@@ -83,7 +83,7 @@
 							<h4 class="mb-1">{{ Auth::user()->name }}</h4>
 						</div>
 					</a>
-					
+
 					<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
 						<a class="dropdown-item" href="/logout" style="color: black;">
 							<i class="fas fa-power-off"></i> Logout</a>
@@ -92,13 +92,13 @@
 					@endif
 					<div class="clear"></div>
 				</header>
-				
+
 				@yield('content')
 				@yield('temp')
 			</main>
 		</div>
 	</div>
-	
+
 	<!-- Bootstrap core JavaScript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
@@ -108,8 +108,8 @@
 		<script src="/js/bootstrap-datepicker.js"></script>
 		<script src="/js/custom.js"></script>
 		@yield('script')
-		
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-		
+
 	</body>
 	</html>
