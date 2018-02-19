@@ -27,7 +27,7 @@
 					@if (Auth::check())
 					<li class="nav-item"><a class="nav-link" href="/user/{{ auth()->id() }}"><em class="fas fa-user"></em> <strong>Mi Perfil</strong></a></li>
 					@endif
-					<li class="nav-item" style="pointer-events:none;"><a class="nav-link" href=""><em class="fas fa-film"></em> <strong>Peliculas</strong></a>
+					<li class="nav-item" style="pointer-events:none;"><a class="nav-link" href=""><em class="fas fa-film"></em> <strong>Peliculas</strong></a><!-- est seccion controla las categorias de las peeliculas, es decir solo se lista populares, mejor calificadas, proximas y en cartelera-->
 						<ul style="margin-left: 2em;pointer-events:auto;">
 							<li>
 								<a class="nav-link"  href="/movies/popular/1">Populares</a>
@@ -43,7 +43,7 @@
 							</li>
 						</ul>
 					</li>
-					<li class="nav-item" style="pointer-events:none;"><a class="nav-link top5" href=""><em class="fas fa-tv"></em> <strong>Series</strong></a>
+					<li class="nav-item" style="pointer-events:none;"><a class="nav-link top5" href=""><em class="fas fa-tv"></em> <strong>Series</strong></a><!-- est seccion controla las categorias de las series, es decir solo se lista populares, mejor calificadas, proximas y en cartelera-->
 						<ul style="margin-left: 2em;pointer-events:auto;">
 							<li>
 								<a class="nav-link" href="/series/popular/1">Populares</a>
@@ -63,9 +63,9 @@
 				@if (! Auth::check())
 				<a href="/login" class="logout-button d-none d-md-block"><em class="fas fa-sign-in-alt"></em> Login</a>
 				@endif
-			</nav>
+			</nav><!-- final del contenedor que lista peliculas, series y el boton de login inicial-->
 
-			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4" style="background-color:#EEEEEE;">
+			<main class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4" style="background-color:#EEEEEE;"><!-- esta seccion de codigo hace referencia a lo que se va a mostrar si un usuario se loguea-->
 				<header class="page-header row">
 					@if (!Auth::check())
 					<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right d-block d-sm-none">
