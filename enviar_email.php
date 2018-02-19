@@ -49,7 +49,13 @@ if(isset($_POST['email'])) {
 
 //Verificar que la dirección de correo sea válida 
     
-
+   $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
+ 
+  if(!preg_match($email_exp,$Email_from)) {
+ 
+    $error_message .= 'La dirección de correo proporcionada no es válida.<br />';
+ 
+  }
 
 //Validadacion de cadenas de texto
 
@@ -97,22 +103,7 @@ if(isset($_POST['email'])) {
  
     $email_message .= "Mensaje: ".clean_string($Mensaje)."\n";
   
- 
-//Encabezados
- 
-$headers = 'From: '.$Email_from."\r\n".
- 
-'Reply-To: '.$Email_from."\r\n" .
- 
-'X-Mailer: PHP/' . phpversion();
- 
-@mail($email_to, $email_subject, $email_message, $headers);  
- 
-?>
- 
-<!-- Mensaje de Éxito-->
- 
-Muchas Gracias! Proximamente Estaremos en Contacto.
+
  
 <?php 
 }
