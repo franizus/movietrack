@@ -1,5 +1,7 @@
 <?php
 
+//esta migracion es para poder crear la tabla de las series y klos seguidores que tiene
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
