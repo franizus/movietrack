@@ -3,60 +3,6 @@
 <head>
 	@yield('head')
 </head>
-<body>
-	<div class="container-fluid" id="wrapper">
-		<div class="row">
-			<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
-				<h1 class="site-title"><a href="/"><img src="/img/trakt.png" width=25px> Movie.Track</a></h1>
-				
-				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fas fa-bars"></em></a>
-				
-				<ul class="nav nav-pills flex-column sidebar-nav">
-					<div class="container">
-						<form method="GET" action="/search">
-							<div class="form-row">
-								<div class="col-9">
-									<input type="text" class="form-control" name="query" placeholder="Buscar..." required>
-								</div>
-								<div class="col-3">
-									<button type="submit" class="btn btn-block btn-danger" style="background-color:#FF0022"><i class="fas fa-search"></i></button>
-								</div>
-							</div>
-						</form>
-					</div>
-					@if (Auth::check())
-					<li class="nav-item"><a class="nav-link" href="/user/{{ auth()->id() }}"><em class="fas fa-user"></em> <strong>Mi Perfil</strong></a></li> 
-					@endif
-					<li class="nav-item" style="pointer-events:none;"><a class="nav-link" href=""><em class="fas fa-film"></em> <strong>Peliculas</strong></a>
-						<ul style="margin-left: 2em;pointer-events:auto;">
-							<li>
-								<a class="nav-link"  href="/movies/popular/1">Populares</a>
-							</li>
-							<li>
-								<a class="nav-link"  href="/movies/top_rated/1">Mejor Calificadas</a>
-							</li>
-							<li>
-								<a class="nav-link" href="/movies/upcoming/1">Proximas</a>
-							</li>
-							<li>
-								<a class="nav-link" href="/movies/now_playing/1">En Cartelera</a>
-							</li>
-						</ul>
-					</li> 
-					<li class="nav-item" style="pointer-events:none;"><a class="nav-link top5" href=""><em class="fas fa-tv"></em> <strong>Series</strong></a>
-						<ul style="margin-left: 2em;pointer-events:auto;">
-							<li>
-								<a class="nav-link" href="/series/popular/1">Populares</a>
-							</li>
-							<li>
-								<a class="nav-link" href="/series/top_rated/1">Mejor Calificadas</a>
-							</li>
-							<li>
-								<a class="nav-link" href="/series/airing_today/1">Al aire hoy</a>
-							</li>
-							<li>
-								<a class="nav-link" href="/series/on_the_air/1">Actualmente en TV</a>
-							</li>
 						</ul>
 					</li> 
 				</ul>
