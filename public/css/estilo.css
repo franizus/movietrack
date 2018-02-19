@@ -598,16 +598,7 @@ p.fexi_header_para1 a i {
     color: #fff;
     text-align: center;
 }
-.form-module .cta a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
-}
-.modal-header {
-    text-align: center;
-    font-size: 2em;
-    color: #212121;
-}
+
 .modal-content{
 	z-index:9999;
 }
