@@ -8,15 +8,15 @@
         color: #fff;
         font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
-    
+
     a {
         color: #fff;
     }
-    
+
     a:visited {
         color: #fff;
     }
-    
+
     a:hover {
         color: #fff;
     }
@@ -73,6 +73,8 @@
                             $rate = intval(round($rate));
                             @endphp
                             <ul class="w3l-ratings">
+
+                              {{$movies[$i]['vote_average']}}
                                 @for ($j = 0; $j < $rate; $j++)
                                 <li><i class="fas fa-star" aria-hidden="true"></i></li>
                                 @endfor
@@ -85,7 +87,7 @@
                 </div>
             </div>
         </div>
-        @endfor        
+        @endfor
     </div>
     <script src="/js/owl.carousel.js"></script>
     <script>
@@ -95,7 +97,7 @@
             itemsDesktop : [640,4],
             itemsDesktopSmall : [414,3]
         });
-    </script> 
+    </script>
     <div class="col-12 top25">
         <h3 class="mb-4">
             Series Destacadas
@@ -121,6 +123,7 @@
                             $rate = intval(round($rate));
                             @endphp
                             <ul class="w3l-ratings">
+                              {{$series[$i]['vote_average']}}
                                 @for ($j = 0; $j < $rate; $j++)
                                 <li><i class="fas fa-star" aria-hidden="true"></i></li>
                                 @endfor
@@ -133,7 +136,7 @@
                 </div>
             </div>
         </div>
-        @endfor        
+        @endfor
     </div>
     <script>
         $("#owl-demo1").owlCarousel({
