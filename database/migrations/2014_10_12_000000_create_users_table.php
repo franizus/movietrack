@@ -1,5 +1,7 @@
 <?php
 
+//esta migracion es para poder crear la tabla de los usuarios que tienen una cuenta en el sistema movietrack
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
