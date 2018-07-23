@@ -24,6 +24,7 @@
 @endsection
 
 @section ('content')
+<!-- 
 <div style="margin-top: -2em;">
     <div id="slidey" style="display:none;">
         <ul>
@@ -47,6 +48,7 @@
         $(".slidey-list-description").dotdotdot();
     </script>
 </div>
+-- >
 <section class="row">
     <div class="col-12 top25">
         <h3 class="mb-4">
